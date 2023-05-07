@@ -197,3 +197,76 @@ function showRowData(button) {
     }
     alert(rowData);
 }
+
+// Todo
+function completeTodo() {
+    console.log(event.target)
+    const class_name = event.target.classList[2]
+    console.log(class_name)
+    if (class_name == "bx-meh-blank") {
+        const parent = event.target.parentNode;
+        const grandparent = parent.parentNode.parentNode;
+        event.target.classList.add("bx-laugh");
+        event.target.classList.remove("bx-meh-blank");
+        let width = 0;
+        const interval = setInterval(() => {
+            grandparent.style.background = `linear-gradient(to right, lightgreen ${width}%, #f1f0f6 ${width}%)`;
+            width += 20;
+            if (width > 100) {
+                clearInterval(interval);
+                grandparent.style.background = 'lightgreen';
+            }
+        }, 100);
+    } else if (class_name == "bx-laugh") {
+        const parent = event.target.parentNode;
+        const grandparent = parent.parentNode.parentNode;
+        event.target.classList.remove("bx-laugh");
+        event.target.classList.add("bx-meh-blank");
+        let width = 0;
+        const interval = setInterval(() => {
+            grandparent.style.background = `linear-gradient(to left, #f1f0f6 ${width}%, lightgreen ${width}%)`;
+            width += 20;
+            if (width > 100) {
+                clearInterval(interval);
+                grandparent.style.background = '#f1f0f6';
+            }
+        }, 100);
+
+    }
+
+}
+
+// 新建一个TODO事项
+const createTodo = document.querySelectorAll('main .table-data .todo .head .btn-create')[0];
+createTodo.addEventListener('click', function(e) {
+    // console.log(createTodo)
+    const list_todo_content = document.getElementById("list_todo_content")
+    const newChildElement = document.createElement('li');
+    newChildElement.className = "not-completed";
+    newChildElement.innerHTML = `
+    <input type="text" value="Edition" style="width: 100%; height: 100%; border: none; background: inherit;font-size: 18px;font-weight: bold">                       
+    <div>
+        <a href="#" class="btn-todo-status">
+            <i class='bx bx-sm bx-meh-blank' onclick="completeTodo()"></i>
+        </a>
+        &nbsp;
+        <a href="#" class="btn-todo-status">
+            <i class='bx bx-sm bx-x' onclick="deleteTodo()"></i>
+        </a>
+    </div>
+        `;
+    list_todo_content.appendChild(newChildElement);
+    // console.log(list_todo_content)
+})
+
+
+function deleteTodo() {
+    const parent = event.target.parentNode;
+    // console.log(parent.className);
+    console.log(parent.className == "btn-todo-status")
+    if (parent.className == "btn-todo-status") {
+        const cu_ele = parent.parentNode.parentNode;
+        // console.log(cu_ele.className);
+        cu_ele.remove();
+    }
+}

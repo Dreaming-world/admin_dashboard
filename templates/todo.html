@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/style.css">
+    <title>AdminSite</title>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
+        <ul class="side-menu">
+            <li><a href="/"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+            <li><a href="/intent"><i class='bx bxs-chart icon'></i> Intent</a></li>
+            <li><a href="{{ url_for('get_intent_message', intent_id='all_0') }}"><i class='bx bx-table icon'></i> Tables</a></li>
+            <li><a href="/todo" class="active"><i class='bx bxs-calendar-plus icon'></i> ToDo</a></li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- NAVBAR -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <i class='bx bx-menu toggle-sidebar'></i>
+            <form action="#">
+                <div class="form-group">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search icon'></i>
+                </div>
+            </form>
+        </nav>
+        <!-- NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+            <h1 class="title">ToDO</h1>
+            <div class="table-data">
+                <div class="todo">
+                    <div class="head">
+                        <h3>Todos</h3>
+                        <a href="#" class="btn-create">
+                            <i class='bx bxs-alarm-add'></i>
+                            <span class="text">Create New</span>
+                        </a>
+                    </div>
+                    <ul class="todo-list" id="list_todo_content">
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts "></script>
+    <script src="../static/script.js "></script>
+</body>
+
+</html>

@@ -4,71 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/style.css">
     <title>AdminSite</title>
 </head>
 
-<body style="background: white;">
-    <!-- 模态框 -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- 模态框头部 -->
-                <div class="modal-header">
-                    <h4 class="modal-title">添加相似问数据</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <!-- 模态框内容 -->
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">填写相似问</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">选择状态</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option value="已禁用" selected>启用</option>
-                                <option value="已禁用">禁用</option>
-                                <option value="已启用">启用</option>
-                              </select>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="showRowData(this)">测试</button>
-                        <button type="submit" class="btn btn-primary disabled" id="editionSentence">提交</button>
-                    </form>
-                </div>
-                <!-- 模态框底部 -->
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
-                </div> -->
+<body>
 
-            </div>
-        </div>
-    </div>
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
         <ul class="side-menu">
             <li><a href="/"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
-            <li class="divider" data-text="main">Main</li>
-            <li>
-                <a href="#"><i class='bx bxs-inbox icon'></i> Elements <i
-                    class='bx bx-chevron-right icon-right'></i></a>
-                <ul class="side-dropdown">
-                    <li><a href="#">Alert</a></li>
-                    <li><a href="#">Badges</a></li>
-                    <li><a href="#">Breadcrumbs</a></li>
-                    <li><a href="#">Button</a></li>
-                </ul>
-            </li>
             <li><a href="/intent"><i class='bx bxs-chart icon'></i> Intent</a></li>
-            <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
-            <li><a href="#"><i class='bx bxs-widget icon'></i> Widgets</a></li>
-            <li><a href="#" class="active"><i class='bx bx-table icon'></i> Tables</a></li>
+            <li><a href="{{ url_for('get_intent_message', intent_id='all_0') }}" class="active"><i class='bx bx-table icon'></i> Tables</a></li>
+            <li><a href="/todo"><i class='bx bxs-calendar-plus icon'></i> ToDo</a></li>
         </ul>
     </section>
     <!-- SIDEBAR -->
@@ -88,60 +38,75 @@
         <!-- NAVBAR -->
 
         <!-- MAIN -->
-        <main style="background: white;">
-            <h1 class="title">Intent Table</h1>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <button type="button" class="btn btn-primary" style="height: 10%; background: #fff; background-color: #106efd;" id="addNewSentence" data-bs-toggle="modal" data-bs-target="#myModal">新增相似问</button>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item"><a class="page-link" href="{{ url_for('get_intent_message', intent_id=intent_id + '_' + pre_index) }}">Previous</a>
-                        </li>
-                        {% for show_page_num in show_page_index %} {% if show_page_num == '...' %}
-                        <li class="page-item disabled"><a class="page-link" href="{{ url_for('get_intent_message', intent_id=intent_id + '_' + show_page_num) }}">{{
-show_page_num}}</a></li>
-                        {% elif show_page_num==current_index %}
-                        <li class="page-item active"><a class="page-link" href="{{ url_for('get_intent_message', intent_id=intent_id + '_' + show_page_num) }}">{{
-    show_page_num}}</a></li>
-                        {% else %}
-                        <li class="page-item"><a class="page-link" href="{{ url_for('get_intent_message', intent_id=intent_id + '_' + show_page_num) }}">{{
-                    show_page_num}}</a></li>
-                        {% endif %} {% endfor %}
-                        <li class="page-item">
-                            <a class="page-link" href="{{ url_for('get_intent_message', intent_id=intent_id + '_' + next_index) }}">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+        <main>
+            <h1 class="title">Table</h1>
+            <div class="table-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Recent Orders</h3>
+                        <a href="#" class="btn-download">
+                            <i class='bx bxs-cloud-download'></i>
+                            <span class="text">Download</span>
+                        </a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Date Order</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="img/people.png">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>01-10-2021</td>
+                                <td><span class="status completed">已启用</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/people.png">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>01-10-2021</td>
+                                <td><span class="status pending">已禁用</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/people.png">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>01-10-2021</td>
+                                <td><span class="status process">已启用</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/people.png">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>01-10-2021</td>
+                                <td><span class="status pending">已启用</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/people.png">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>01-10-2021</td>
+                                <td><span class="status completed">已启用</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <table class="table table-hover">
-                <thead class="sticky-top">
-                    <tr>
-                        <th>ID</th>
-                        <th>意图名称</th>
-                        <th>中文名称</th>
-                        <th>相似问</th>
-                        <th>状态</th>
-                        <th>功能</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for id in ids %}
-                    <tr>
-                        <td>{{id}}</td>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>@johndoe</td>
-                        <td>启用中</td>
-                        <td>
-                            <button type="button" class="btn btn-primary" onclick="showRowData(this)">编辑</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </main>
         <!-- MAIN -->
     </section>
     <!-- NAVBAR -->
+
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="../static/script.js"></script>
 </body>

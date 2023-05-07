@@ -28,12 +28,22 @@ def intent_show():
     return render_template("intent.html")
 
 
+@app.route("/todo")
+def todo_show():
+    return render_template("todo.html")
+
+
 @app.route("/get_intent_message/<intent_id>")
-def get_intent_message(intent_id):
+def get_intent_message(intent_id="all_0"):
+    return render_template("table.html")
+
+
+@app.route("/tmp_get_intent_message/<intent_id>")
+def tmp_get_intent_message(intent_id):
     print(intent_id)
     intent_id, index = intent_id.split("_")
     index = int(index)
-    ids = IDS[index * MAX_NUM:(index + 1) * MAX_NUM] # 当前要展示的数据
+    ids = IDS[index * MAX_NUM:(index + 1) * MAX_NUM]  # 当前要展示的数据
 
     # 分页展示
     if len(IDS) % MAX_NUM == 0:

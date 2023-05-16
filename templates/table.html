@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
@@ -23,7 +22,7 @@
     </section>
     <!-- SIDEBAR -->
 
-    <!-- NAVBAR -->
+    <!-- content -->
     <section id="content">
         <!-- NAVBAR -->
         <nav>
@@ -39,6 +38,28 @@
 
         <!-- MAIN -->
         <main>
+            <div class="modal-box" id="update_file_div">
+                <div class="file_wrapper">
+                    <header>File Uploader JavaScript</header>
+                    <form class="file_wrapper_form">
+                        <input class="file-input" type="file" name="file" hidden>
+                        <i class="bx bxs-cloud-upload bx-lg"></i>
+                        <p>Browse File to Upload</p>
+                    </form>
+                    <section class="uploaded-area">
+                        <li class="row">
+                            <div class="content upload">
+                                <i class="bx bx-file"></i>
+                                <div class="details">
+                                    <span class="name">Makefile • Uploaded</span>
+                                    <span class="size">0 KB</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check"></i>
+                        </li>
+                    </section>
+                </div>
+            </div>
             <h1 class="title">Table</h1>
             <div class="table-data">
                 <div class="order">
@@ -47,6 +68,10 @@
                         <a href="#" class="btn-download">
                             <i class='bx bxs-cloud-download'></i>
                             <span class="text">Download</span>
+                        </a>
+                        <a href="#" class="btn-download" onclick="upLoadFile()">
+                            <i class='bx bxs-cloud-upload'></i>
+                            <span class="text">Upload</span>
                         </a>
                     </div>
                     <table>
@@ -74,38 +99,24 @@
                                 <td>01-10-2021</td>
                                 <td><span class="status pending">已禁用</span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status process">已启用</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status pending">已启用</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">已启用</span></td>
-                            </tr>
                         </tbody>
                     </table>
+                    <hr style="opacity:0.2;margin-bottom: 5px">
+                    <div class="my_specal_div" style="width: 100%;">
+                        <a href="#" class="page_num_button">
+                            <i class='bx bxs-rewind-circle'></i>
+                        </a>
+                        &nbsp;
+                        <a href="#" class="page_num_button">
+                            <i class='bx bxs-fast-forward-circle'></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </main>
         <!-- MAIN -->
     </section>
-    <!-- NAVBAR -->
+    <!-- content -->
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="../static/script.js"></script>

@@ -182,21 +182,12 @@ var options = {
 };
 
 // 展示表格信息
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-
-function showRowData(button) {
-    // 获取所在行
-    var row = button.parentNode.parentNode;
-    // 获取所有单元格
-    var cells = row.getElementsByTagName("td");
-    // 构建行数据
-    var rowData = "";
-    for (var i = 0; i < cells.length - 1; i++) {
-        rowData += "<tr><td>" + cells[i].textContent + "</td></tr>";
-    }
-    alert(rowData);
+const index_chart_ele = document.querySelector("#chart");
+if (index_chart_ele) {
+    var chart = new ApexCharts(index_chart_ele, options);
+    chart.render();
 }
+
 
 // Todo
 function completeTodo() {
@@ -238,14 +229,15 @@ function completeTodo() {
 
 // 新建一个TODO事项
 const createTodo = document.querySelectorAll('main .table-data .todo .head .btn-create')[0];
-createTodo.addEventListener('click', function(e) {
-    // console.log(createTodo)
-    const list_todo_content = document.getElementById("list_todo_content")
-    const newChildElement = document.createElement('li');
-    newChildElement.className = "not-completed";
-    newChildElement.innerHTML = `
+if (createTodo) {
+    createTodo.addEventListener('click', function(e) {
+        // console.log(createTodo)
+        const list_todo_content = document.getElementById("list_todo_content")
+        const newChildElement = document.createElement('li');
+        newChildElement.className = "not-completed";
+        newChildElement.innerHTML = `
     <input type="text" value="Edition" style="width: 100%; height: 100%; border: none; background: inherit;font-size: 18px;font-weight: bold">                       
-    <div>
+    <div class="my_specal_div">
         <a href="#" class="btn-todo-status">
             <i class='bx bx-sm bx-meh-blank' onclick="completeTodo()"></i>
         </a>
@@ -255,9 +247,10 @@ createTodo.addEventListener('click', function(e) {
         </a>
     </div>
         `;
-    list_todo_content.appendChild(newChildElement);
-    // console.log(list_todo_content)
-})
+        list_todo_content.appendChild(newChildElement);
+        // console.log(list_todo_content)
+    })
+}
 
 
 function deleteTodo() {
@@ -269,4 +262,39 @@ function deleteTodo() {
         // console.log(cu_ele.className);
         cu_ele.remove();
     }
+}
+
+function upLoadFile() {
+    const update_contronl = document.getElementById("update_file_div");
+    update_contronl.classList.remove("modal-box")
+    update_contronl.classList.add("modal-box-activate")
+}
+
+const fileForm = document.querySelector('.file_wrapper_form');
+const fileInput = document.querySelector(".file-input");
+const progressArea = document.querySelector(".progress-area");
+const uploadedArea = document.querySelector(".uploaded-area");
+
+if (fileForm && fileInput) {
+    fileForm.addEventListener('click', () => {
+        fileInput.click();
+    });
+}
+
+if (fileInput) {
+    fileInput.onchange = ({ target }) => {
+        let file = target.files[0];
+        if (file) {
+            let fileName = file.name;
+            if (fileName.length >= 12) {
+                let splitName = fileName.split('.');
+                fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+            }
+            uploadFile(fileName);
+        }
+    }
+}
+
+function uploadFile(name) {
+    alert(name);
 }

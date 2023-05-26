@@ -298,3 +298,7 @@ if (fileInput) {
 function uploadFile(name) {
     alert(name);
 }
+
+function create_intent_card() {
+    alert("create_intent_card");
+}

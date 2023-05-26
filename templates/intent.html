@@ -41,6 +41,11 @@
         <main>
             <h1 class="title">Intent</h1>
             <div class="info-data">
+                <div class="card" onclick="create_intent_card()">
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        <i class='bx bxs-add-to-queue bx-lg'></i>
+                    </div>
+                </div>
                 <a href="{{ url_for('get_intent_message', intent_id='positive_0') }}">
                     <div class="card" id="positive">
                         <div class="head">
@@ -48,23 +53,12 @@
                                 <h2>1500</h2>
                                 <p>Traffic</p>
                             </div>
-                            <i class='bx bx-trending-up icon'></i>
+                            <i class='bx bx-trending-down icon'></i>
                         </div>
                         <span class="progress" data-value="40%"></span>
                         <span class="label">40%</span>
                     </div>
                 </a>
-                <div class="card">
-                    <div class="head">
-                        <div>
-                            <h2>234</h2>
-                            <p>Sales</p>
-                        </div>
-                        <i class='bx bx-trending-down icon down'></i>
-                    </div>
-                    <span class="progress" data-value="60%"></span>
-                    <span class="label">60%</span>
-                </div>
                 <div class="card">
                     <div class="head">
                         <div>
@@ -76,17 +70,7 @@
                     <span class="progress" data-value="30%"></span>
                     <span class="label">30%</span>
                 </div>
-                <div class="card">
-                    <div class="head">
-                        <div>
-                            <h2>235</h2>
-                            <p>Visitors</p>
-                        </div>
-                        <i class='bx bx-trending-up icon'></i>
-                    </div>
-                    <span class="progress" data-value="80%"></span>
-                    <span class="label">80%</span>
-                </div>
+
             </div>
 
         </main>

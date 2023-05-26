@@ -408,7 +408,7 @@ main .breadcrumbs li.divider {
 main .info-data {
     margin-top: 36px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
     grid-gap: 20px;
 }
 
@@ -418,6 +418,7 @@ main .info-data .card {
     background: var(--light);
     box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
     transition: transform 0.3s ease-in-out;
+    max-width: 300px;
 }
 
 main .info-data .card:hover {
@@ -906,12 +907,12 @@ main .btn-send:hover {
     border-radius: 24px;
     background-color: #fff;
     opacity: 0;
-    transition: all 0.3s ease;
-    transform: translate(-50%, -50%) scale(1.2);
+    /* transition: all 0.3s ease; */
+    /* transform: translate(-50%, -50%) scale(1.2); */
     position: fixed;
     left: 60%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -921,13 +922,13 @@ main .btn-send:hover {
     align-items: center;
     padding: 30px 20px;
     border-radius: 24px;
-    background-color: #ffffff;
-    transition: all 0.3s ease;
+    background-color: #ceced2;
+    /* transition: all 0.3s ease; */
     transform: translate(-50%, -50%) scale(1.2);
     position: fixed;
     left: 60%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1)；
 }
 
@@ -936,6 +937,7 @@ main .btn-send:hover {
     background: inherit;
     border-radius: 5px;
     padding: 30px;
+    background: #ffffff;
     /* box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05); */
 }
 

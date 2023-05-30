@@ -907,12 +907,9 @@ main .btn-send:hover {
     border-radius: 24px;
     background-color: #fff;
     opacity: 0;
-    /* transition: all 0.3s ease; */
-    /* transform: translate(-50%, -50%) scale(1.2); */
     position: fixed;
     left: 60%;
     top: 50%;
-    /* transform: translate(-50%, -50%); */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -923,12 +920,10 @@ main .btn-send:hover {
     padding: 30px 20px;
     border-radius: 24px;
     background-color: #ceced2;
-    /* transition: all 0.3s ease; */
     transform: translate(-50%, -50%) scale(1.2);
     position: fixed;
     left: 60%;
     top: 50%;
-    /* transform: translate(-50%, -50%); */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1)；
 }
 
@@ -938,7 +933,6 @@ main .btn-send:hover {
     border-radius: 5px;
     padding: 30px;
     background: #ffffff;
-    /* box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05); */
 }
 
 .file_wrapper header {
@@ -1004,8 +998,17 @@ main .btn-send:hover {
     font-size: 16px;
 }
 
-
-/* MAIN */
-
-
-/* CONTENT */
+.modal-close-submit-button {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 36px;
+    background: var(--blue);
+    color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 10px;
+    font-weight: 500;
+    margin-right: 30px;
+    border: none;
+}

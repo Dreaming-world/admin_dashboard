@@ -302,3 +302,9 @@ function uploadFile(name) {
 function create_intent_card() {
     alert("create_intent_card");
 }
+
+function closeModal() {
+    const update_contronl = document.getElementById("update_file_div");
+    update_contronl.classList.remove("modal-box-activate");
+    update_contronl.classList.add("modal-box");
+}
